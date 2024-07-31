@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolyo Web Sitesi Projesi
 
-## Getting Started
+Bu projede kendime ait bir portfolyo web sitesi tasarlamayı amaçlıyorum.
 
-First, run the development server:
+## Başlangıç
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Projeyi yerel makinenize klonladıktan sonra, değişiklikleri containera taşıyabilmek için aşağıdaki adımları izleyebilirsiniz.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Geliştirme Ortamını Kurma
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Next.js ve Tailwind.css Kurulumu
+1. Projeyi oluşturma
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    ```
+    npx create-next-app@latest
+    ```
 
-## Learn More
+    komutu gerekli dizinde koşulur ve Typescript seçeneği hariç hepsini içeren proje elde edilir.
 
-To learn more about Next.js, take a look at the following resources:
+### Container oluşturma
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Proje dizinine gidin:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```bash
+    cd <proje-dizin-adi>
+    ```
 
-## Deploy on Vercel
+2. Docker imajını oluşturun:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    docker build -t portfolio .
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Docker container'ını çalıştırın:
+
+    ```bash
+    docker run -p 3000:3000 portfolio
+    ```
+
+Bu komutlar, Next.js projesi için hazırlanmış Dockerfile ile container içinde geliştirmeye başlamanızı sağlar.
+
+## Proje Hakkında
+
+Bu proje, modern web teknolojileri kullanarak kendi portfolyo web sitemi oluşturmayı hedeflediğim bir çalışmadır.
+
+### Kullanılan Teknolojiler
+
+1. Next.js
+2. Tailwind.css
+3. shacn/ui
