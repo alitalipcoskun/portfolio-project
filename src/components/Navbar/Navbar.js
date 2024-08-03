@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import SandwichMenu from "../SanwichMenu/SandwichMenu"
+import SandwichMenu from "../SandwichMenu/SandwichMenu"
 import NavItem from "../NavItem/NavItem"
 
 
@@ -10,7 +10,7 @@ const NavItems = [
   { name: "About Me", href: "" },
   { name: "Projects", href: "" },
   {name: "Contact", href: ""}
-]
+];
 
 const Navbar = () => {
   return (
@@ -28,7 +28,7 @@ const Navbar = () => {
         <SandwichMenu items={NavItems} />
     </div>
   )
-}
+};
 
 export default Navbar;
 
