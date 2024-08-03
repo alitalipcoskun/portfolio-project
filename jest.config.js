@@ -13,7 +13,8 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jsdom',
       "paths": {
-      "@/components/*": ["./src/components/*"]
+      "@/components/*": ["./src/components/*"],
+      "@/shadcn_ui/*": ["./src/components/ui/*"]
     },
 }
  
