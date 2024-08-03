@@ -14,7 +14,8 @@ const config = {
   testEnvironment: 'jsdom',
       "paths": {
       "@/components/*": ["./src/components/*"],
-      "@/shadcn_ui/*": ["./src/components/ui/*"]
+      "@/ui/*": ["./src/components/ui/*"],
+      "@/shadcn_ui": ["./src/shadcn_ui"]
     },
 }
  

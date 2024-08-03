@@ -1,12 +1,4 @@
 import React from 'react'
-import {
-    navigationMenuTriggerStyle,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-import './styles.css';
 import Link from 'next/link';
 
 
@@ -16,13 +8,9 @@ import Link from 'next/link';
 const NavItem = (props) => {
     const { item } = props;
     return (
-        <NavigationMenuItem>
-                <Link href={`${item.href}`} legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                        {item.name}
-                    </NavigationMenuLink>
-                </Link>
-        </NavigationMenuItem>
+        <Link href={`${item.href}`} className="text-lg font-medium hover:underline underline-offset-4" prefetch={false}>
+            {item.name}
+        </Link>
     )
 }
 
