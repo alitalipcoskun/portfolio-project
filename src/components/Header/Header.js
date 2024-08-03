@@ -15,7 +15,7 @@ const Header = () => {
       "text-3xl font-bold underline",
       fontSans.variable
     )}>
-      <p>Deneme</p>
+      Deneme
     </h1>
   )
 }
