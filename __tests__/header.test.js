@@ -1,4 +1,4 @@
-import Header from '@/components/Header/Header'
+import Header from '@/components/Navbar/Navbar'
 import { cn } from '@/lib/utils'
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
