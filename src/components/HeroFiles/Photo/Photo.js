@@ -3,7 +3,7 @@ import React from 'react'
 
 const Photo = () => {
     return (
-        <div className="container sm:h-96 sm:w-96 h-64 w-64  relative"> 
+        <div className="relative h-64 w-64 sm:h-96 sm:w-96 rounded-full overflow-hidden"> 
             <Image
                 src="/me.jpg"
                 alt="Picture"

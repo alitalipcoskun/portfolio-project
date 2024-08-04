@@ -5,14 +5,13 @@ import Name from '../Name/Name'
 
 const Hero = () => {
     return (
-        <div clasName="container flex flex-col">
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-center mt-2 sm:mt-0 space-y-4 sm:space-y-0 sm:space-x-4">
             <Photo />
-            <div className = "container flex flex-col mt-2 sm:mt-0">
+            <div className="flex flex-col items-center sm:items-start justify-center">
                 <Name />
                 <DetailedInfo />
             </div>
         </div>
     )
 }
-
 export default Hero

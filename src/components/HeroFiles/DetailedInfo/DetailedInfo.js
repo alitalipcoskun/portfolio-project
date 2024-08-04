@@ -3,7 +3,8 @@ import React from 'react'
 const DetailedInfo = (props) => {
   return (
     <div className = "container">
-        Data Scientist
+        <h3>Computer Engineering Student</h3>
+        <p>Data Scientist Candidate</p>
     </div>
   )
 }
