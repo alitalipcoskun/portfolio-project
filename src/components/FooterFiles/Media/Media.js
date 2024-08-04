@@ -10,10 +10,10 @@ const buttons = [
 
 const Media = () => {
   return (
-    <div className= "w-full flex justify-around mt-4">
+    <div className= "w-full flex justify-around mb-4 mt-4">
       {
         buttons.map((button, idx) => {
-            return <FooterButton key = {idx} name = {button.name} svg = {button.svg}></FooterButton>
+            return <FooterButton key = {idx} name = {button.name} svg = {button.svg} link = {button.link}></FooterButton>
         })
       }
     </div>

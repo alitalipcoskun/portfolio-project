@@ -7,7 +7,7 @@ const SandwichMenu = ({ items }) => {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="lg:hidden">
+                <Button variant="outline" size="icon" className="lg:hidden mr-4">
                     <MenuIcon className="h-6 w-6" />
                     <span className="sr-only">navbar</span>
                 </Button>
