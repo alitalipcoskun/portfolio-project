@@ -1,18 +1,17 @@
 import Image from 'next/image'
-import React from 'react'
 
-const Photo = () => {
+const Photo = ({ size, src }) => {
+    const sizeClasses = size === 'large' ? 'h-80 w-80 sm:h-120 sm:w-120' : 'h-64 w-64 sm:h-96 sm:w-96';
     return (
-        <div className="relative h-64 w-64 sm:h-96 sm:w-96 rounded-full overflow-hidden"> 
+        <div className={`relative ${sizeClasses} rounded-full overflow-hidden`}> 
             <Image
-                src="/me.jpg"
+                src= {src}
                 alt="Picture"
-                layout="fill" // required
+                layout="fill"
                 objectFit="cover"
-                className="rounded-full" 
             />
         </div>
     )
 }
 
-export default Photo
+export default Photo;
