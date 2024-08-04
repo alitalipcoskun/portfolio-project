@@ -1,6 +1,6 @@
-"use client"
+
 import Link from "next/link"
-import SandwichMenu from "../SanwichMenu/SandwichMenu"
+import SandwichMenu from "../SandwichMenu/SandwichMenu"
 import NavItem from "../NavItem/NavItem"
 
 
@@ -10,15 +10,15 @@ const NavItems = [
   { name: "About Me", href: "" },
   { name: "Projects", href: "" },
   {name: "Contact", href: ""}
-]
+];
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-between px-4 py-2 bg-white dark:bg-gray-800">
-        <Link href="" className="flex items-center gap-2" prefetch={false}>
+    <div className="flex items-center justify-between py-2 w-100 bg-white dark:bg-gray-800">
+        <Link href="" className="container flex items-center gap-2" prefetch={false}>
           <span className="text-lg font-semibold">Ali Talip Coşkun</span>
         </Link>
-        <div className="hidden lg:flex gap-4">
+        <div className="container hidden lg:flex justify-end gap-4 bg-white">
           {
             NavItems.map((item, idx) => {
                 return <NavItem item= {item} key = {idx}/>
@@ -28,7 +28,7 @@ const Navbar = () => {
         <SandwichMenu items={NavItems} />
     </div>
   )
-}
+};
 
 export default Navbar;
 

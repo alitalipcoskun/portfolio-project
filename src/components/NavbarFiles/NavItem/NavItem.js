@@ -12,6 +12,6 @@ const NavItem = (props) => {
             {item.name}
         </Link>
     )
-}
+};
 
-export default NavItem
+export default NavItem;
