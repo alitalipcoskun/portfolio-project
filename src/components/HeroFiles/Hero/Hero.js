@@ -1,16 +1,13 @@
 import React from 'react'
+import Photo from '../Photo/Photo'
+import Text from '../Text/Text'
 
-const Hero = () => {
-  return (
-    <div clasName = "display-flex flex-row p-0 mx-0 my-auto max-w-5xl box-content relative overflow-hidden">
-      <div className="w-4/5 display-flex flex-column mx-0 my-auto">
-        <h2 className= "text-6xl font-extrabold">
-            Ali Talip Coşkun
-        </h2>
-        
-      </div>
-    </div>
-  )
+const Hero = (props) => {
+    return (
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-center mt-2 sm:mt-0 space-y-4 sm:space-y-0 sm:space-x-4">
+            <Photo src={'/me.jpg'} size = "small" key = "hero"/>
+            <Text />
+        </div>
+    )
 }
-
 export default Hero
