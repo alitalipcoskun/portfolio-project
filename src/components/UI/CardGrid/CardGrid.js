@@ -21,10 +21,15 @@ const cards = [
     {
         title: 'Deneme 4',
         description: '15.05.2001-15.05.2026',
-        content: 'Exercitation sin'
+        content: 'Lorem duis laboris irure deserunt. Ad do aliquip labore proident non non officia aute id pariatur. Incididunt ut sit deserunt ad mollit elit adipisicing. Aute quis culpa nostrud culpa est occaecat do nostrud fugiat reprehenderit pariatur sint ipsum.'
+    },
+    {
+        title: "Deneme 5",
+        description: "10.10.2010-10.10.2023",
+        content: "Fugiat nulla id elit non esse nisi anim commodo laboris exercitation. Elit adipisicing elit excepteur laborum ipsum. Labore adipisicing est quis consequat dolor et consequat mollit qui ad nisi amet minim."
     }
 ]
-const CardGrid = () => {
+const CardGrid = ({kind}) => {
     const renderedData = cards.map((element) => {
         if (element['content'].length > 100) {
             let displayedContent = "";
@@ -57,6 +62,7 @@ const CardGrid = () => {
                             content={card.displayed_content}
                             actual_content={card.content}
                             content_len={card.content_len}
+                            kind={kind}
                         />
                     </div>
                 ))}

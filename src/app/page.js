@@ -12,7 +12,7 @@ export default function Home() {
         <Navbar></Navbar>
         <Hero></Hero>
         <AboutMe></AboutMe>
-        <CardGrid></CardGrid>
+        <CardGrid kind="Internship"></CardGrid>
         <Footer></Footer>
     </>
 

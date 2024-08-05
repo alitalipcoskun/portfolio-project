@@ -1,7 +1,8 @@
 import { Button } from "@/shadcn_ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shadcn_ui/card"
+import Modal from "../Modal/Modal"
 
-const UICard = ({ title, description, content,  actual_content, content_len}) => {
+const UICard = ({ title, description, content,  actual_content, content_len, kind}) => {
 
     
     return (
@@ -14,11 +15,11 @@ const UICard = ({ title, description, content,  actual_content, content_len}) =>
                     {description}
                 </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent title = {title} actual_content={actual_content} description = {description} kind={kind}>
                 <p className="text-base text-gray-700">
                     {content}
                 </p>
-                {content_len > 100 ? <Button>More...</Button>: ""}
+                {content_len > 100 ? <Modal title={title} actual_content={actual_content} description={description} kind={kind}></Modal>: ""}
             </CardContent>
         </Card>
     )
