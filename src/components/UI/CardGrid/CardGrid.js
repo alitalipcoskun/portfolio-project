@@ -28,29 +28,27 @@ const cards = [
         description: "10.10.2010-10.10.2023",
         content: "Fugiat nulla id elit non esse nisi anim commodo laboris exercitation. Elit adipisicing elit excepteur laborum ipsum. Labore adipisicing est quis consequat dolor et consequat mollit qui ad nisi amet minim."
     }
-]
-const CardGrid = ({kind}) => {
-    const renderedData = cards.map((element) => {
-        if (element['content'].length > 100) {
-            let displayedContent = "";
-            for (let i = 0; i <= 100; i++) {
-                displayedContent += element['content'][i];
-            }
-            return {
-                ...element,
-                displayed_content: displayedContent,
-                content_len: element['content'].length
-            }
-        } else {
-            return {
-                ...element,
-                content_len: element['content'].length,
-                displayed_content: element['content']
-            }
+];
+const renderedData = cards.map((element) => {
+    if (element['content'].length > 100) {
+        let displayedContent = "";
+        for (let i = 0; i <= 100; i++) {
+            displayedContent += element['content'][i];
         }
-
-    })
-
+        return {
+            ...element,
+            displayed_content: displayedContent,
+            content_len: element['content'].length
+        }
+    } else {
+        return {
+            ...element,
+            content_len: element['content'].length,
+            displayed_content: element['content']
+        }
+    }
+})
+const CardGrid = ({kind}) => {
     return (
         <div className="flex flex-col items-center justify-center p-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl w-full">

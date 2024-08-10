@@ -1,5 +1,5 @@
 import React from 'react'
-import Photo from '../Photo/Photo'
+import Photo from '../../UI/Photo/Photo'
 import Text from '../Text/Text'
 
 const Hero = (props) => {
