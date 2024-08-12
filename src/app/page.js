@@ -3,7 +3,7 @@ import Footer from "@/components/FooterFiles/Footer/Footer";
 import Hero from "@/components/HeroFiles/Hero/Hero";
 import Navbar from "@/components/NavbarFiles/Navbar/Navbar";
 import CardGrid from "@/components/UI/CardGrid/CardGrid";
-import PhotoCarousel from "@/components/UI/Carousel/Carousel";
+import ExpCarousel from "@/components/UI/ExpCarousel/ExpCarousel";
 
 const cards = [
   {
@@ -60,7 +60,7 @@ export default function Home() {
         <Hero></Hero>
         <AboutMe></AboutMe>
         {/*<CardGrid kind="Internship"></CardGrid>*/}
-        <PhotoCarousel kind={"Internship"} data={renderedData}/>
+        <ExpCarousel kind={"Internship"} data={renderedData}/>
         <Footer></Footer>
     </>
 

@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/sha
 import Modal from "../Modal/Modal"
 import parse from 'html-react-parser'
 
-const UICard = ({ title, description, content,  actual_content, content_len, kind}) => {
+const UICard = ({ title, description, content, actual_content, content_len, kind }) => {
     return (
         <Card className="p-4 border rounded-lg shadow-md max-w-xs max-h-[400px] overflow-hidden place-items-center">
             <CardHeader>
@@ -11,14 +11,15 @@ const UICard = ({ title, description, content,  actual_content, content_len, kin
                 </CardTitle>
                 <CardDescription className="text-sm text-gray-500">
                     {description}
+                    {parse("<br/>")}
                     {kind}
                 </CardDescription>
             </CardHeader>
-            <CardContent title = {title} actual_content={actual_content} description = {description} kind={kind}>
+            <CardContent title={title} actual_content={actual_content} description={description} kind={kind}>
                 <p className="text-base text-gray-700">
                     {content}
                 </p>
-                {content_len > 100 ? <Modal title={title} actual_content={actual_content} description={description} kind={kind}></Modal>: ""}
+                {content_len > 100 ? <Modal title={title} actual_content={actual_content} description={description} kind={kind}></Modal> : ""}
             </CardContent>
         </Card>
     )

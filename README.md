@@ -19,23 +19,20 @@ Projeyi yerel makinenize klonladıktan sonra, değişiklikleri containera taşı
 
 ### Container oluşturma
 
-1. Proje dizinine gidin:
+Avoiding conflicts in containers:
 
-    ```bash
-    cd <proje-dizin-adi>
-    ```
+Run this commands first:
+1. docker rm app 
+2. docker volume rm nodemodules
+3. docker stop $(docker ps -aq)
+4. docker rm $(docker ps -aq)
 
-2. Docker imajını oluşturun:
+After that, run the following commands to create a real-time development environment.
 
-    ```bash
-    docker build -t portfolio .
-    ```
+1. docker build -t  . nextjs-with-shadcnui-portfolio
+2. docker volume create --name nodemodules
 
-3. Docker container'ını çalıştırın:
-
-    ```bash
-    docker run -p 3000:3000 portfolio
-    ```
+3. docker run -u=3000:3000 -v $(pwd):/app -w=/app -d -p 3000:3000 --rm --name=nodedev node bash -c "npm install && npm run dev"
 
 Bu komutlar, Next.js projesi için hazırlanmış Dockerfile ile container içinde geliştirmeye başlamanızı sağlar.
 
@@ -47,4 +44,4 @@ Bu proje, modern web teknolojileri kullanarak kendi portfolyo web sitemi oluştu
 
 1. Next.js
 2. Tailwind.css
-3. shacn/ui
+3. shadcn/ui

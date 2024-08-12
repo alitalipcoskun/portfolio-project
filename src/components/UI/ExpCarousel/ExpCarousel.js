@@ -3,7 +3,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Autoplay from "embla-carousel-autoplay"
 import React from 'react'
 import UICard from '../Card/Card'
-const PhotoCarousel = ({ kind, data }) => {
+const ExpCarousel = ({ kind, data }) => {
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="w-full max-w-screen-lg px-4">
@@ -25,19 +25,17 @@ const PhotoCarousel = ({ kind, data }) => {
                                     title={card.title}
                                     description={card.description}
                                     content={card.displayed_content}
-                                    actual_content={card.actual_content}
+                                    actual_content={card.content}
                                     content_len={card.content_len}
                                     kind={kind}
                                 />
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2" />
-                    <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2" />
                 </Carousel>
             </div>
         </div>
     );
 };
 
-export default PhotoCarousel;
+export default ExpCarousel;
