@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Photo from '../../UI/Photo/Photo'
 import Text from '../Text/Text'

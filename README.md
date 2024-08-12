@@ -18,23 +18,10 @@ Projeyi yerel makinenize klonladıktan sonra, değişiklikleri containera taşı
     komutu gerekli dizinde koşulur ve Typescript seçeneği hariç hepsini içeren proje elde edilir.
 
 ### Container oluşturma
+Docker desktop uygulamasını açtıktan sonra:
 
-Avoiding conflicts in containers:
+`docker compose up --build` komutunu koşarak, projeyi geliştirme ortamıyla beraber ayağa kaldırabilirsiniz.
 
-Run this commands first:
-1. docker rm app 
-2. docker volume rm nodemodules
-3. docker stop $(docker ps -aq)
-4. docker rm $(docker ps -aq)
-
-After that, run the following commands to create a real-time development environment.
-
-1. docker build -t  . nextjs-with-shadcnui-portfolio
-2. docker volume create --name nodemodules
-
-3. docker run -u=3000:3000 -v $(pwd):/app -w=/app -d -p 3000:3000 --rm --name=nodedev node bash -c "npm install && npm run dev"
-
-Bu komutlar, Next.js projesi için hazırlanmış Dockerfile ile container içinde geliştirmeye başlamanızı sağlar.
 
 ## Proje Hakkında
 

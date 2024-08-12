@@ -1,3 +1,4 @@
+
 import Photo from '@/components/UI/Photo/Photo'
 
 const AboutMe = () => {

@@ -1,8 +1,9 @@
+
 import React from 'react'
 
 import { Button } from '@/shadcn_ui/button'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/shadcn_ui/dialog'
-import { Label } from '@/shadcn_ui/label'
+
 
 
 const Modal = ({ title, description, actual_content, kind}) => {
