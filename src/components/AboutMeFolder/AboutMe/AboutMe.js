@@ -1,7 +1,5 @@
 
-import Photo from '@/components/HeroFiles/Photo/Photo'
-import react from 'react'
-
+import Photo from '@/components/UI/Photo/Photo'
 
 const AboutMe = () => {
     return (

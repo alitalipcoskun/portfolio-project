@@ -18,26 +18,10 @@ Projeyi yerel makinenize klonladıktan sonra, değişiklikleri containera taşı
     komutu gerekli dizinde koşulur ve Typescript seçeneği hariç hepsini içeren proje elde edilir.
 
 ### Container oluşturma
+Docker desktop uygulamasını açtıktan sonra:
 
-1. Proje dizinine gidin:
+`docker compose up --build` komutunu koşarak, projeyi geliştirme ortamıyla beraber ayağa kaldırabilirsiniz.
 
-    ```bash
-    cd <proje-dizin-adi>
-    ```
-
-2. Docker imajını oluşturun:
-
-    ```bash
-    docker build -t portfolio .
-    ```
-
-3. Docker container'ını çalıştırın:
-
-    ```bash
-    docker run -p 3000:3000 portfolio
-    ```
-
-Bu komutlar, Next.js projesi için hazırlanmış Dockerfile ile container içinde geliştirmeye başlamanızı sağlar.
 
 ## Proje Hakkında
 
@@ -47,4 +31,4 @@ Bu proje, modern web teknolojileri kullanarak kendi portfolyo web sitemi oluştu
 
 1. Next.js
 2. Tailwind.css
-3. shacn/ui
+3. shadcn/ui

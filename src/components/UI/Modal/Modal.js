@@ -1,11 +1,12 @@
+
 import React from 'react'
 
 import { Button } from '@/shadcn_ui/button'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/shadcn_ui/dialog'
-import { Label } from '@/shadcn_ui/label'
 
 
-const Modal = ({ title, description, actual_content, kind}) => {
+
+const Modal = ({ title, dates, description, kind}) => {
     return <Dialog>
         <DialogTrigger asChild>
             <Button variant="outline">More...</Button>
@@ -20,8 +21,8 @@ const Modal = ({ title, description, actual_content, kind}) => {
             <div className="flex items-center space-x-2">
                 <div className="grid flex-1 gap-2">
                     <h2>{title}</h2>
+                    <p>{dates}</p>
                     <p>{description}</p>
-                    <p>{actual_content}</p>
                 </div>
 
             </div>
