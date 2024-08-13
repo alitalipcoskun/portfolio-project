@@ -4,6 +4,7 @@ import Autoplay from "embla-carousel-autoplay"
 import React from 'react'
 import UICard from '../Card/Card'
 const ExpCarousel= ({data, kind}) => {
+    console.log(data);
     return (
         <div className="flex justify-center items-center h-screen w-full px-4">
             <Carousel
@@ -22,7 +23,7 @@ const ExpCarousel= ({data, kind}) => {
                         >
                             <UICard
                                 title={card.title}
-                                date={card.date}
+                                dates={card.dates}
                                 description={card.displayed_description}
                                 actual_description={card.description}
                                 content_len={card.content_len}

@@ -6,7 +6,7 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 
 
 
-const Modal = ({ title, description, actual_content, kind}) => {
+const Modal = ({ title, dates, description, kind}) => {
     return <Dialog>
         <DialogTrigger asChild>
             <Button variant="outline">More...</Button>
@@ -21,8 +21,8 @@ const Modal = ({ title, description, actual_content, kind}) => {
             <div className="flex items-center space-x-2">
                 <div className="grid flex-1 gap-2">
                     <h2>{title}</h2>
+                    <p>{dates}</p>
                     <p>{description}</p>
-                    <p>{actual_content}</p>
                 </div>
 
             </div>
