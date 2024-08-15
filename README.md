@@ -20,7 +20,9 @@ Projeyi yerel makinenize klonladıktan sonra, değişiklikleri containera taşı
 ### Container oluşturma
 Docker desktop uygulamasını açtıktan sonra:
 
-`docker compose up --build` komutunu koşarak, projeyi geliştirme ortamıyla beraber ayağa kaldırabilirsiniz.
+`docker compose up` komutunu koşarak, projeyi geliştirme ortamıyla beraber ayağa kaldırabilirsiniz.
+
+`--build` komutuyla da yeniden container inşa edilmesini sağlayabilirsiniz.
 
 
 ## Proje Hakkında

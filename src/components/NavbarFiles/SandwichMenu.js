@@ -1,6 +1,6 @@
 
 import React from 'react'
-import NavItem from '../NavItem/NavItem'
+import NavItem from './NavItem'
 import { Sheet, SheetContent, SheetTrigger } from '@/shadcn_ui/sheet'
 import { Button } from '@/shadcn_ui/button'
 

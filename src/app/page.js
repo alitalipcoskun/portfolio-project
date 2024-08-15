@@ -1,9 +1,9 @@
 "use client"
-import AboutMe from "@/components/AboutMeFolder/AboutMe/AboutMe";
+import AboutMe from "@/components/AboutMeFiles/AboutMe";
 import Footer from "@/components/FooterFiles/Footer/Footer";
 import Hero from "@/components/HeroFiles/Hero/Hero";
 import Navbar from "@/components/NavbarFiles/Navbar/Navbar";
-import ExpCarousel from "@/components/UI/ExpCarousel/ExpCarousel";
+import ExpCarousel from "@/components/UI/ExpCarousel";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -23,6 +23,7 @@ export default function Home() {
             let { data, error } = await supabase
                 .from('portfolio-db-internships')
                 .select('*')
+                .order('created_at', { ascending: true });
             if (error) {
                 console.log(error)
             } else {

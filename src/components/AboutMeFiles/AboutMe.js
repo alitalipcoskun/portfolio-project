@@ -1,5 +1,5 @@
 
-import Photo from '@/components/UI/Photo/Photo'
+import Photo from '@/components/UI/Photo'
 
 const AboutMe = () => {
     return (
