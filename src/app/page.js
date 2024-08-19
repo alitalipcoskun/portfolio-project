@@ -1,11 +1,12 @@
 "use client"
 import AboutMe from "@/components/AboutMeFiles/AboutMe";
-import Footer from "@/components/FooterFiles/Footer/Footer";
-import Hero from "@/components/HeroFiles/Hero/Hero";
-import Navbar from "@/components/NavbarFiles/Navbar/Navbar";
+import Footer from "@/components/FooterFiles/Footer";
+import Hero from "@/components/HeroFiles/Hero";
+import Navbar from "@/components/NavbarFiles/Navbar";
 import ExpCarousel from "@/components/UI/ExpCarousel";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import Experience from "@/components/ExperiencesFiles/Experience";
 
 
 
@@ -17,6 +18,7 @@ import { supabase } from "@/lib/supabaseClient";
 
 export default function Home() {
     const [data, setData] = useState([]);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -49,20 +51,23 @@ export default function Home() {
 
                 setData(renderedData);
             }
-
         }
         fetchData();
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 2000);
+        return () => clearTimeout(timer);
     }, []);
 
 
-    console.log(data);
     return (
         <>
             <Navbar></Navbar>
-            <Hero></Hero>
-            <AboutMe></AboutMe>
+            <Hero isLoading={isLoading}></Hero>
+            <AboutMe isLoading={isLoading}></AboutMe>
+            <Experience data = {data}></Experience>
+            <Experience data = {data}></Experience>
             {/*<CardGrid kind="Internship"></CardGrid>*/}
-            <ExpCarousel kind={"Internship"} data={data} />
             <Footer></Footer>
         </>
 

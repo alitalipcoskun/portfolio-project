@@ -1,12 +1,15 @@
 
 import React from 'react';
-import Media from '../Media/Media';
-import Signature from '../Signature/Signature';
+import Media from './Media';
+import Signature from './Signature';
+
+
+
 
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-between px-4 py-2 bg-white dark:bg-gray-800">
+    <footer className="flex flex-col items-center justify-between px-4 py-2 bg-white dark:bg-gray-800 mt-8">
       <Media />
       <div className="w-full md:w-3/4 flex justify-center">
         <iframe 

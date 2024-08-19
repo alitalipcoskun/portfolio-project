@@ -2,18 +2,18 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/shadcn_ui/carousel'
 import Autoplay from "embla-carousel-autoplay"
 import React from 'react'
-import UICard from '../Card/Card'
-const ExpCarousel= ({data, kind}) => {
+import UICard from './Card'
+const ExpCarousel = ({ data, kind }) => {
     console.log(data);
     return (
-        <div className="flex justify-center items-center h-screen w-full px-4">
+        <div className="relative flex justify-center items-center py-3 w-full px-6">
             <Carousel
                 plugins={[
                     Autoplay({
                         delay: 3000,
                     }),
                 ]}
-                className="relative w-full max-w-screen-lg mx-auto"
+                className="w-full max-w-screen-lg mx-auto"
             >
                 <CarouselContent className="flex">
                     {data.map((card, index) => (
@@ -33,6 +33,9 @@ const ExpCarousel= ({data, kind}) => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
+                <CarouselNext></CarouselNext>
+                <CarouselPrevious></CarouselPrevious>
+
             </Carousel>
         </div>
     );

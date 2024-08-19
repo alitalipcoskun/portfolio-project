@@ -1,6 +1,6 @@
 "use client"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shadcn_ui/card"
-import Modal from "../Modal/Modal"
+import Modal from "./Modal"
 import parse from 'html-react-parser'
 
 const UICard = ({ title, dates, content, description, actual_description, content_len, kind, className }) => {
