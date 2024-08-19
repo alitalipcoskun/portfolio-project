@@ -1,9 +1,6 @@
-
-import Link from "next/link"
-
-import NavItem from "./NavItem"
+import Link from "next/link";
+import NavItem from "./NavItem";
 import SandwichMenu from "./SandwichMenu";
-
 
 
 const NavItems = [
@@ -15,23 +12,22 @@ const NavItems = [
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-evenly py-2 w-full bg-white dark:bg-gray-800 fixed">
-      <div>
-        <Link href="" className="container flex items-center gap-2" prefetch={false}>
-          <span className="text-lg font-semibold">Ali Talip Coşkun</span>
+    <div className="flex items-center justify-between py-4 px-4 w-full bg-white dark:bg-gray-800 sticky top-0 left-0 z-10">
+      <div className="flex items-center">
+        <Link href="" className="text-lg font-semibold" prefetch={false}>
+          Ali Talip Coşkun
         </Link>
       </div>
-      <div className="container hidden lg:flex flex-row-reverse gap-4 bg-white">
-        {
-          NavItems.map((item, idx) => {
-            return <NavItem item={item} key={idx} />
-          })
-        }
+      <div className="hidden lg:flex gap-6">
+        {NavItems.map((item, idx) => (
+          <NavItem item={item} key={idx} />
+        ))}
       </div>
-      <SandwichMenu items={NavItems} />
+      <div className="lg:hidden">
+        <SandwichMenu items={NavItems} />
+      </div>
     </div>
-  )
+  );
 };
 
 export default Navbar;
-

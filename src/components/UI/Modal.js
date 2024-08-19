@@ -28,7 +28,7 @@ const Modal = ({ title, dates, description, kind}) => {
             </div>
             <DialogFooter className="sm:justify-start">
                 <DialogClose asChild>
-                    <Button className= "container" type="button" variant="secondary">
+                    <Button className= "container mt-1" type="button" variant="secondary">
                         Close
                     </Button>
                 </DialogClose>

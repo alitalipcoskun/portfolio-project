@@ -17,11 +17,11 @@ import Experience from "@/components/ExperiencesFiles/Experience";
 
 
 export default function Home() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({internships: [], about: []});
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchInternshipData = async () => {
             let { data, error } = await supabase
                 .from('portfolio-db-internships')
                 .select('*')
@@ -49,27 +49,42 @@ export default function Home() {
                     }
                 })
 
-                setData(renderedData);
+                setData((prev) => {return {...prev, internships: renderedData}});
             }
         }
-        fetchData();
-        const timer = setTimeout(() => {
-            setLoading(false)
-        }, 2000);
-        return () => clearTimeout(timer);
-    }, []);
+        const fetchAboutData = async () => {
+
+            let { data, error } = await supabase
+            .from('portfolio-db-about')
+            .select('*')
+            if (error){
+                console.log(error)
+            }else{
+                setData((prev) => {return {...prev, about: data}})
+            }
+
+    }
 
 
-    return (
-        <>
-            <Navbar></Navbar>
-            <Hero isLoading={isLoading}></Hero>
-            <AboutMe isLoading={isLoading}></AboutMe>
-            <Experience data = {data}></Experience>
-            <Experience data = {data}></Experience>
-            {/*<CardGrid kind="Internship"></CardGrid>*/}
-            <Footer></Footer>
-        </>
+        fetchInternshipData();
+        fetchAboutData();
+    const timer = setTimeout(() => {
+        setLoading(false)
+    }, 2000);
+    return () => clearTimeout(timer);
+}, []);
 
-    );
+
+return (
+    <>
+        <Navbar></Navbar>
+        <Hero isLoading={isLoading}></Hero>
+        <AboutMe isLoading={isLoading} data={data['about']}></AboutMe>
+        <Experience data={data['internships']}></Experience>
+        <Experience data={data['internships']}></Experience>
+        {/*<CardGrid kind="Internship"></CardGrid>*/}
+        <Footer></Footer>
+    </>
+
+);
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import ExpCarousel from '../UI/ExpCarousel'
+import ProjectCard from '../UI/ProjectCard'
 
 const Experience = ({data}) => {
     return (
@@ -15,6 +16,7 @@ const Experience = ({data}) => {
                 </p>
             </div >
             <ExpCarousel kind={"Internship"} data={data} />
+            <ProjectCard item={{src:"/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"]}}></ProjectCard>
         </div >
     )
 }
