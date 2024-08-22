@@ -3,7 +3,7 @@ import { Skeleton } from '@/shadcn_ui/skeleton';
 import Image from 'next/image'
 
 const Photo = ({ size, src, loadingState, isHeroImage, className }) => {
-    const sizeClasses = size === 'large' ? 'h-80 w-80 sm:h-120 sm:w-120' : 'h-64 w-64 sm:h-96 sm:w-96';
+    const sizeClasses = size === 'large' ? 'h-80 w-80 sm:h-96 sm:w-96' : 'h-64 w-64 sm:h-120 sm:w-120';
 
     const heroClasses = isHeroImage ?  "rounded-full" : "";
     
@@ -13,6 +13,7 @@ const Photo = ({ size, src, loadingState, isHeroImage, className }) => {
             </Skeleton>):
             (
                 <Image
+                size = "small"
                 src= {src}
                 alt="Picture"
                 layout="fill"

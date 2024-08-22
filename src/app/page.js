@@ -80,8 +80,7 @@ return (
         <Navbar></Navbar>
         <Hero isLoading={isLoading}></Hero>
         <AboutMe isLoading={isLoading} data={data['about']}></AboutMe>
-        <Experience data={data['internships']}></Experience>
-        <Experience data={data['internships']}></Experience>
+        <Experience internshipData={data['internships']} isLoading={isLoading}></Experience>
         {/*<CardGrid kind="Internship"></CardGrid>*/}
         <Footer></Footer>
     </>

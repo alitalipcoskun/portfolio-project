@@ -1,11 +1,19 @@
 import React from 'react'
 import ExpCarousel from '../UI/ExpCarousel'
 import ProjectCard from '../UI/ProjectCard'
+import ProjectCardGrid from '../UI/ProjectCard'
 
-const Experience = ({data}) => {
+const items = [{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+]
+const Experience = ({ internshipData, isLoading }) => {
     return (
         <div className="container flex flex-col sm:flex-col justify-center items-center sm:mt-0 space-y-4 sm:space-y-0 sm:space-x-4">
-            <div div className="container flex flex-col items-center sm:items-start justify-center text-left max-w-xl" >
+            <div div className="flex flex-col items-center sm:items-start justify-center text-left max-w-full" >
                 <h3 className="text-2xl sm:text-4xl font-bold mb-2">Passion about Computer Science</h3>
                 <p className="text-base sm:text-lg">
                     Pariatur proident et dolor sit et laborum enim Lorem tempor nostrud. Exercitation qui pariatur eiusmod sint amet. Pariatur veniam magna est ipsum do cupidatat culpa laboris dolor in Lorem.
@@ -15,8 +23,8 @@ const Experience = ({data}) => {
                     Culpa excepteur sunt dolor amet voluptate ipsum id esse ea eiusmod cupidatat. Excepteur excepteur nostrud cupidatat exercitation quis. Ut do consequat exercitation non adipisicing velit ut consectetur pariatur ex irure qui eu. Ea tempor aliquip aute quis adipisicing est irure commodo consectetur est quis cillum aliquip aliqua. Proident in cupidatat eu reprehenderit ullamco esse proident laboris aliqua in do occaecat amet.
                 </p>
             </div >
-            <ExpCarousel kind={"Internship"} data={data} />
-            <ProjectCard item={{src:"/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"]}}></ProjectCard>
+            <ExpCarousel kind={"Internship"} data={internshipData} />
+            <ProjectCardGrid items={items} isLoading={isLoading}></ProjectCardGrid>
         </div >
     )
 }

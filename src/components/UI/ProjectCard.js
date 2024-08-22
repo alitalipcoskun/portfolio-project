@@ -1,37 +1,64 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shadcn_ui/card'
-import React from 'react'
-import Photo from './Photo'
-import Image from 'next/image';
+import React from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shadcn_ui/card';
+import Photo from './Photo';
 import { Badge } from '@/shadcn_ui/badge';
 import Link from 'next/link';
+import { Skeleton } from '@/shadcn_ui/skeleton';
 
-const ProjectCard = ({ item }) => {
+const ProjectCard = ({ item, isLoading }) => {
     const { title, description, src, badges } = item;
+
     return (
-        <Card className="rounded-md w-auto">
+        <Card className={`transition hover:scale-105 rounded-md shadow-lg duration-200 ${isLoading ? "w-96" : " "}`}>
             <CardHeader>
-                <CardTitle>{title}</CardTitle>
-                <CardDescription className>{description}</CardDescription>
+                {isLoading ? <Skeleton className="h-6 w-1/2 mb-2"/>:<CardTitle>{title}</CardTitle>}
+
+                {isLoading ? (
+                    <Skeleton className="h-4 w-3/4 mb-4" />
+                ) : (
+                    <CardDescription>{description}</CardDescription>
+                )}
+            
             </CardHeader>
             <CardContent>
                 <div className="mb-4">
-                {badges.map((skill, idx) => {
-                    return <Badge key={idx} className={"mr-1"}>{skill}</Badge>
-                })}
+                    {isLoading ? (
+                        <Skeleton className="h-4 w-full mb-2" />
+                    ) : (
+                        badges.map((skill, idx) => (
+                            <Badge key={idx} className="mr-1">{skill}</Badge>
+                        ))
+                    )}
                 </div>
-                
-                <Photo
-                    className="round-md w-6 mb-2"
-                    src={src}
-                    alt="Picture"
-                    layout="fill"
-                    objectFit="cover"
-                />
-                <Link className= "bg-white text-black border-black py-1 px-2 rounded-md border" href="https://www.github.com" rel="noopener noreferrer" target="_blank">Repo</Link>
-
+                {isLoading ? (
+                    <Skeleton className="h-48 w-full mb-4" />
+                ) : (
+                    <Photo
+                        className="rounded-md w-full mb-2"
+                        src={src}
+                        alt="Picture"
+                        layout="fill"
+                        objectFit="cover"
+                    />
+                )}
+                {isLoading ? (
+                    <Skeleton className="h-8 w-24" />
+                ) : (
+                    <Link className="bg-white text-black border-black py-1 px-2 rounded-md border" href="https://www.github.com" rel="noopener noreferrer" target="_blank">Repo</Link>
+                )}
             </CardContent>
         </Card>
-    )
+    );
 }
 
-export default ProjectCard
+const ProjectCardGrid = ({ items, isLoading }) => {
+    return (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {items.map((item, index) => (
+                <ProjectCard key={index} item={item} isLoading={isLoading}/>
+            ))}
+        </div>
+    );
+}
+
+export default ProjectCardGrid
