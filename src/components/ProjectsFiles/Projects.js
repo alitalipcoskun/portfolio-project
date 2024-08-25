@@ -1,13 +1,22 @@
-import React from 'react'
-import ExpCarousel from '../UI/ExpCarousel'
+import React, { useState } from 'react'
+import ProjectCardGrid from '../UI/ProjectCard'
 import SectionContainer from '../UI/SectionContainer'
+import { Button } from '@/shadcn_ui/button';
 
 
-const Experience = ({ internshipData, isLoading }) => {
+
+const Projects = ({ isLoading, items }) => {
+    const [projectAmount, setProjectAmount] = useState(3);
+    const heightCondition = projectAmount >= items.length
+
+    const clickHandler = () => {
+        setProjectAmount((prev) => {return prev + 3})
+    }
+
     return (
-        <SectionContainer className="flex flex-col sm:flex-col justify-center items-center sm:mt-0 space-y-4 sm:space-y-0 sm:space-x-4">
-            <div div className="flex flex-col items-center sm:items-start justify-center text-left max-w-full" >
-                <h3 className="text-2xl sm:text-4xl font-bold mb-2">Work and Internship Experiences</h3>
+        <SectionContainer className={""}>
+            <div className="flex flex-col items-center sm:items-start justify-center text-left max-w-full mb-8" >
+                <h3 className="text-2xl sm:text-4xl font-bold mb-2">Projects</h3>
                 <p className="text-base sm:text-lg">
                     Pariatur proident et dolor sit et laborum enim Lorem tempor nostrud. Exercitation qui pariatur eiusmod sint amet. Pariatur veniam magna est ipsum do cupidatat culpa laboris dolor in Lorem.
                     <br /><br />
@@ -16,10 +25,10 @@ const Experience = ({ internshipData, isLoading }) => {
                     Culpa excepteur sunt dolor amet voluptate ipsum id esse ea eiusmod cupidatat. Excepteur excepteur nostrud cupidatat exercitation quis. Ut do consequat exercitation non adipisicing velit ut consectetur pariatur ex irure qui eu. Ea tempor aliquip aute quis adipisicing est irure commodo consectetur est quis cillum aliquip aliqua. Proident in cupidatat eu reprehenderit ullamco esse proident laboris aliqua in do occaecat amet.
                 </p>
             </div >
-            <ExpCarousel kind={"Internship"} data={internshipData} />
-            
-        </ SectionContainer>
+            <ProjectCardGrid items={items} isLoading={isLoading} projectAmount={projectAmount}></ProjectCardGrid>
+            {!heightCondition && <Button variant="outline" onClick={clickHandler}>More project</Button>}
+        </SectionContainer>
     )
 }
 
-export default Experience
+export default Projects

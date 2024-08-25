@@ -7,6 +7,7 @@ import ExpCarousel from "@/components/UI/ExpCarousel";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import Experience from "@/components/ExperiencesFiles/Experience";
+import Projects from "@/components/ProjectsFiles/Projects";
 
 
 
@@ -14,10 +15,16 @@ import Experience from "@/components/ExperiencesFiles/Experience";
 
 
 
+const projectItems = [{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+]
 
 
 export default function Home() {
-    const [data, setData] = useState({internships: [], about: []});
+    const [data, setData] = useState({ internships: [], about: [], error: false });
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -49,41 +56,45 @@ export default function Home() {
                     }
                 })
 
-                setData((prev) => {return {...prev, internships: renderedData}});
+                setData((prev) => { return { ...prev, internships: renderedData } });
             }
         }
         const fetchAboutData = async () => {
 
             let { data, error } = await supabase
-            .from('portfolio-db-about')
-            .select('*')
-            if (error){
-                console.log(error)
-            }else{
-                setData((prev) => {return {...prev, about: data}})
+                .from('portfolio-db-about')
+                .select('*')
+            if (error) {
+                setData((prev) => { return { ...prev, error: true } })
+            } else {
+                setData((prev) => { return { ...prev, about: data } })
             }
 
-    }
+        }
 
 
         fetchInternshipData();
         fetchAboutData();
-    const timer = setTimeout(() => {
-        setLoading(false)
-    }, 2000);
-    return () => clearTimeout(timer);
-}, []);
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 2000);
+        return () => clearTimeout(timer);
+    }, []);
 
 
-return (
-    <>
-        <Navbar></Navbar>
-        <Hero isLoading={isLoading}></Hero>
-        <AboutMe isLoading={isLoading} data={data['about']}></AboutMe>
-        <Experience internshipData={data['internships']} isLoading={isLoading}></Experience>
-        {/*<CardGrid kind="Internship"></CardGrid>*/}
-        <Footer></Footer>
-    </>
+    return (
+        <>
+            <Navbar></Navbar>
+            {data.error ? (<div>Error found! Try again later...</div>) : (
+                <>
+                    <Hero isLoading={isLoading}></Hero>
+                    <AboutMe isLoading={isLoading} data={data['about']}></AboutMe>
+                    <Experience internshipData={data['internships']} isLoading={isLoading}></Experience>
+                    <Projects isLoading={isLoading} items={projectItems}></Projects>
+                </>
+            )}
+            <Footer></Footer>
+        </>
 
-);
+    );
 }

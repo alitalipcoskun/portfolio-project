@@ -51,10 +51,11 @@ const ProjectCard = ({ item, isLoading }) => {
     );
 }
 
-const ProjectCardGrid = ({ items, isLoading }) => {
+const ProjectCardGrid = ({ items, isLoading, projectAmount }) => {
+    const renderedItems = items.slice(0, projectAmount);
     return (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((item, index) => (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 h-full">
+            {renderedItems.map((item, index) => (
                 <ProjectCard key={index} item={item} isLoading={isLoading}/>
             ))}
         </div>

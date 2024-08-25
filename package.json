@@ -29,6 +29,7 @@
     "html-react-parser": "^5.1.12",
     "lucide-react": "^0.418.0",
     "next": "14.2.5",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
     "react-flagkit": "^2.0.4",
