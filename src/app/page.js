@@ -1,11 +1,13 @@
 "use client"
 import AboutMe from "@/components/AboutMeFiles/AboutMe";
-import Footer from "@/components/FooterFiles/Footer/Footer";
-import Hero from "@/components/HeroFiles/Hero/Hero";
-import Navbar from "@/components/NavbarFiles/Navbar/Navbar";
+import Footer from "@/components/FooterFiles/Footer";
+import Hero from "@/components/HeroFiles/Hero";
+import Navbar from "@/components/NavbarFiles/Navbar";
 import ExpCarousel from "@/components/UI/ExpCarousel";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import Experience from "@/components/ExperiencesFiles/Experience";
+import Projects from "@/components/ProjectsFiles/Projects";
 
 
 
@@ -13,13 +15,20 @@ import { supabase } from "@/lib/supabaseClient";
 
 
 
+const projectItems = [{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+{ src: "/me.jpg", title: "title", description: "description for the temporary purposes", badges: ["React", "Git", "Next.js"] },
+]
 
 
 export default function Home() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({ internships: [], about: [], error: false });
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchInternshipData = async () => {
             let { data, error } = await supabase
                 .from('portfolio-db-internships')
                 .select('*')
@@ -47,22 +56,43 @@ export default function Home() {
                     }
                 })
 
-                setData(renderedData);
+                setData((prev) => { return { ...prev, internships: renderedData } });
+            }
+        }
+        const fetchAboutData = async () => {
+
+            let { data, error } = await supabase
+                .from('portfolio-db-about')
+                .select('*')
+            if (error) {
+                setData((prev) => { return { ...prev, error: true } })
+            } else {
+                setData((prev) => { return { ...prev, about: data } })
             }
 
         }
-        fetchData();
+
+
+        fetchInternshipData();
+        fetchAboutData();
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 2000);
+        return () => clearTimeout(timer);
     }, []);
 
 
-    console.log(data);
     return (
         <>
             <Navbar></Navbar>
-            <Hero></Hero>
-            <AboutMe></AboutMe>
-            {/*<CardGrid kind="Internship"></CardGrid>*/}
-            <ExpCarousel kind={"Internship"} data={data} />
+            {data.error ? (<div>Error found! Try again later...</div>) : (
+                <>
+                    <Hero isLoading={isLoading}></Hero>
+                    <AboutMe isLoading={isLoading} data={data['about']}></AboutMe>
+                    <Experience internshipData={data['internships']} isLoading={isLoading}></Experience>
+                    <Projects isLoading={isLoading} items={projectItems}></Projects>
+                </>
+            )}
             <Footer></Footer>
         </>
 

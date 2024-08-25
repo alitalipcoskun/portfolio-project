@@ -1,21 +1,23 @@
 
-import Photo from '@/components/UI/Photo'
+import { Skeleton } from '@/shadcn_ui/skeleton';
 
-const AboutMe = () => {
+
+const AboutMe = ({ isLoading, data }) => {
+    console.log(data);
     return (
-        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-center mt-2 sm:mt-0 space-y-4 sm:space-y-0 sm:space-x-4">
-            <div className="flex flex-col items-center sm:items-start justify-center text-center sm:text-left max-w-xl">
-                <p className="text-lg font-medium">About Me</p>
-                <h3 className="text-2xl sm:text-4xl font-bold mb-2">Passion about Computer Science</h3>
-                <p className="text-base sm:text-lg">
-                    Pariatur proident et dolor sit et laborum enim Lorem tempor nostrud. Exercitation qui pariatur eiusmod sint amet. Pariatur veniam magna est ipsum do cupidatat culpa laboris dolor in Lorem.
-                    <br /><br />
-                    Nostrud sit elit non aute laboris ut sint veniam fugiat velit esse aliqua incididunt. Duis duis ullamco magna exercitation excepteur commodo velit id incididunt consectetur elit nostrud. Mollit amet voluptate incididunt anim laboris duis enim nulla. Adipisicing aliqua nisi fugiat laborum elit aliquip veniam aliqua cillum. Cupidatat labore ipsum ut ex sint amet consectetur.
-                    <br /><br />
-                    Culpa excepteur sunt dolor amet voluptate ipsum id esse ea eiusmod cupidatat. Excepteur excepteur nostrud cupidatat exercitation quis. Ut do consequat exercitation non adipisicing velit ut consectetur pariatur ex irure qui eu. Ea tempor aliquip aute quis adipisicing est irure commodo consectetur est quis cillum aliquip aliqua. Proident in cupidatat eu reprehenderit ullamco esse proident laboris aliqua in do occaecat amet.
-                </p>
-            </div>
-            <Photo size='large' src='/me.jpg' key = "aboutme"/>
+        <div className="container flex flex-col sm:flex-row justify-center items-center sm:mt-0 space-y-2 sm:space-y-0 sm:space-x-2 w-full h-full sm:h-[100vh]">
+            {isLoading ? (<div className="flex flex-col items-center sm:items-start justify-center text-left sm:text-left max-w-full">
+                <Skeleton className="w-72 sm:h-12 sm:w-80 mb-2" />
+                <Skeleton className="w-72 sm:h-12 sm:w-80 mb-2" />
+                <Skeleton className="h-12 w-[225px] mb-2" />
+                <Skeleton className="h-8 w-[200px] mb-2" />
+                <Skeleton className="h-8 w-[200px]" />
+            </div>) : (<div className="flex flex-col items-center sm:items-start justify-center text-left max-w-full">
+                <h3 className="text-3xl align-middle text-center font-bold mb-6">About Me</h3>
+                {data.map(({paragraph}, idx) => {
+                    return <p key={idx} className="text-base sm:text-lg mb-4">{paragraph.trim()}</p>
+                })}
+            </div>)}
         </div>
     )
 };
