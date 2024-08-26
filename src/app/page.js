@@ -3,11 +3,12 @@ import AboutMe from "@/components/AboutMeFiles/AboutMe";
 import Footer from "@/components/FooterFiles/Footer";
 import Hero from "@/components/HeroFiles/Hero";
 import Navbar from "@/components/NavbarFiles/Navbar";
-import ExpCarousel from "@/components/UI/ExpCarousel";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import Experience from "@/components/ExperiencesFiles/Experience";
 import Projects from "@/components/ProjectsFiles/Projects";
+import Link from "next/link";
+import ContactPage from "@/components/ContactFiles/ContactPage";
 
 
 
@@ -24,7 +25,7 @@ const projectItems = [{ src: "/me.jpg", title: "title", description: "descriptio
 
 
 export default function Home() {
-    const [data, setData] = useState({ internships: [], about: [], error: false });
+    const [data, setData] = useState({ internships: [], about: [], projects: [], error: false });
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -32,7 +33,7 @@ export default function Home() {
             let { data, error } = await supabase
                 .from('portfolio-db-internships')
                 .select('*')
-                .order('created_at', { ascending: true });
+                .order('id', { ascending: true });
             if (error) {
                 console.log(error)
             } else {
@@ -60,7 +61,6 @@ export default function Home() {
             }
         }
         const fetchAboutData = async () => {
-
             let { data, error } = await supabase
                 .from('portfolio-db-about')
                 .select('*')
@@ -71,28 +71,41 @@ export default function Home() {
             }
 
         }
+        const fetchProjectData = async () => {
+            let { data, error } = await supabase
+                .from('portfolio-db-projects')
+                .select('*')
+            if (error) {
+                setData((prev) => { return { ...prev, error: true } })
+            } else {
+                setData((prev) => { return { ...prev, projects: data } })
+            }
+
+        }
 
 
         fetchInternshipData();
         fetchAboutData();
+        fetchProjectData();
         const timer = setTimeout(() => {
             setLoading(false)
         }, 2000);
         return () => clearTimeout(timer);
     }, []);
-
-
     return (
         <>
             <Navbar></Navbar>
-            {data.error ? (<div>Error found! Try again later...</div>) : (
+            {data.error ? (<div className="flex items-center justify-center h-[100vh]"><h1>There is an error occured...<br />{<Link href="/" className="text-blue-600" onClick={() => {
+                location.reload()
+            }}>{" Click here to refresh the page or try again later..."} </Link>}</h1></div>) : (
                 <>
                     <Hero isLoading={isLoading}></Hero>
                     <AboutMe isLoading={isLoading} data={data['about']}></AboutMe>
                     <Experience internshipData={data['internships']} isLoading={isLoading}></Experience>
-                    <Projects isLoading={isLoading} items={projectItems}></Projects>
+                    <Projects isLoading={isLoading} items={data["projects"]}></Projects>
                 </>
             )}
+            <ContactPage isLoading={isLoading}></ContactPage>
             <Footer></Footer>
         </>
 
