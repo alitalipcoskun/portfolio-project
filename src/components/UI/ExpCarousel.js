@@ -4,7 +4,6 @@ import Autoplay from "embla-carousel-autoplay"
 import React from 'react'
 import UICard from './Card'
 const ExpCarousel = ({ data, kind }) => {
-    console.log(data);
     return (
         <div className="relative flex justify-center items-center py-3 w-full px-6">
             <Carousel

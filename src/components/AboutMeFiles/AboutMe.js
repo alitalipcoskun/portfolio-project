@@ -3,7 +3,6 @@ import { Skeleton } from '@/shadcn_ui/skeleton';
 
 
 const AboutMe = ({ isLoading, data }) => {
-    console.log(data);
     return (
         <div className="container flex flex-col sm:flex-row justify-center items-center sm:mt-0 space-y-2 sm:space-y-0 sm:space-x-2 w-full h-full sm:h-[100vh]">
             {isLoading ? (<div className="flex flex-col items-center sm:items-start justify-center text-left sm:text-left max-w-full">

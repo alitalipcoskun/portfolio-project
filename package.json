@@ -26,6 +26,7 @@
     "embla-carousel": "^8.1.8",
     "embla-carousel-autoplay": "^8.1.8",
     "embla-carousel-react": "^8.1.8",
+    "formik": "^2.4.6",
     "html-react-parser": "^5.1.12",
     "lucide-react": "^0.418.0",
     "next": "14.2.5",
@@ -35,7 +36,8 @@
     "react-flagkit": "^2.0.4",
     "shadcn-ui": "^0.2.3",
     "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.8",

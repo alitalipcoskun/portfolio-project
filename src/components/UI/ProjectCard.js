@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { Skeleton } from '@/shadcn_ui/skeleton';
 
 const ProjectCard = ({ item, isLoading }) => {
-    const { title, description, src, badges, github_link } = item;
+    const { title, description, src, badges } = item;
 
     return (
-        <Card className="transition hover:scale-105 rounded-md shadow-lg duration-200 justify-center">
+        <Card className="transition hover:scale-105 rounded-md shadow-lg duration-200">
             <CardHeader>
                 {isLoading ? <Skeleton className="h-6 w-1/2 mb-2"/> : <CardTitle>{title}</CardTitle>}
                 {isLoading ? (
@@ -19,7 +19,7 @@ const ProjectCard = ({ item, isLoading }) => {
                 )}
             </CardHeader>
             <CardContent>
-                <div className="mb-4 flex flex-wrap gap-2 justify-left">
+                <div className="mb-4 flex flex-wrap gap-2 justify-center">
                     {isLoading ? (
                         <Skeleton className="h-4 w-full mb-2" />
                     ) : (
@@ -30,19 +30,21 @@ const ProjectCard = ({ item, isLoading }) => {
                 </div>
                 <div className="flex justify-center mb-4">
                     {isLoading ? (
-                        <Skeleton className="h-32 w-32 mb-4" />
+                        <Skeleton className="h-40 w-40 mb-4" />
                     ) : (
-                        <Photo
-                            className="rounded-md object-contain w-32 h-32"
-                            src={src}
-                            alt="Project image"
-                        />
+                        <div className="w-40 h-40">
+                            <img
+                                className="rounded-md w-full h-full object-contain"
+                                src={src}
+                                alt="Project image"
+                            />
+                        </div>
                     )}
                 </div>
                 {isLoading ? (
                     <Skeleton className="h-8 w-24" />
                 ) : (
-                    <Link className="bg-white text-black border-black py-1 px-2 rounded-md border" href={`${github_link}`} rel="noopener noreferrer" target="_blank">Repo</Link>
+                    <Link className="bg-white text-black border-black py-1 px-2 rounded-md border" href="https://www.github.com" rel="noopener noreferrer" target="_blank">Repo</Link>
                 )}
             </CardContent>
         </Card>
