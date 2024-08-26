@@ -6,13 +6,13 @@ import { Button } from '@/shadcn_ui/button';
 
 
 const Projects = ({ isLoading, items }) => {
-    const [projectAmount, setProjectAmount] = useState(3);
+    const [projectAmount, setProjectAmount] = useState(2);
     const heightCondition = projectAmount >= items.length
 
     const clickHandler = () => {
-        setProjectAmount((prev) => {return prev + 3})
+        setProjectAmount((prev) => {return prev + 2})
     }
-
+    console.log(items);
     return (
         <SectionContainer className={""}>
             <div className="flex flex-col items-center sm:items-start justify-center text-left max-w-full mb-8" >

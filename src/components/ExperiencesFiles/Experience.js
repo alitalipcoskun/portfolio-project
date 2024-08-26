@@ -5,7 +5,7 @@ import SectionContainer from '../UI/SectionContainer'
 
 const Experience = ({ internshipData, isLoading }) => {
     return (
-        <SectionContainer className="flex flex-col sm:flex-col justify-center items-center sm:mt-0 space-y-4 sm:space-y-0 sm:space-x-4">
+        <SectionContainer className="flex flex-col sm:flex-col justify-center items-center sm:mt-0 space-y-4 sm:space-y-0 sm:space-x-4 h-full sm:h-[100vh]">
             <div div className="flex flex-col items-center sm:items-start justify-center text-left max-w-full" >
                 <h3 className="text-2xl sm:text-4xl font-bold mb-2">Work and Internship Experiences</h3>
                 <p className="text-base sm:text-lg">

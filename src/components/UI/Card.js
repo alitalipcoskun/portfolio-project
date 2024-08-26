@@ -20,7 +20,7 @@ const UICard = ({ title, dates, content, description, actual_description, conten
                 <p className="text-base text-gray-700">
                     {description}
                 </p>
-                {content_len > 100 ? <Modal title={title} description={actual_description} date={dates} kind={kind}></Modal> : ""}
+                {content_len > 100 ? <Modal title={title} description={actual_description} dates={dates} kind={kind}></Modal> : ""}
             </CardContent>
         </Card>
     )
